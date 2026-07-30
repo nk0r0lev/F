@@ -356,6 +356,15 @@ function openQuestion(topicIndex, questionIndex, button){
         "hidden"
     );
 
+    // Звук открытия вопроса
+const openSound = new Audio("open.mp3");
+
+openSound.play().catch(error => {
+    console.log(
+        "Не удалось воспроизвести open.mp3:",
+        error
+    );
+});
 
 
     startTimer();
@@ -374,7 +383,16 @@ showAnswerButton.onclick = function(){
 
     answerText.style.display =
     "block";
+    
+ // Звук правильного ответа / показа ответа
+    const answerSound = new Audio("answer.mp3");
 
+    answerSound.play().catch(error => {
+        console.log(
+            "Не удалось воспроизвести answer.mp3:",
+            error
+        );
+    });
 
 };
 
@@ -447,7 +465,15 @@ function startTimer(){
     timerBlock.innerHTML =
     seconds;
 
+// Звук окончания времени
+    const timerSound = new Audio("timer.mp3");
 
+    timerSound.play().catch(error => {
+        console.log(
+            "Не удалось воспроизвести timer.mp3:",
+            error
+        );
+    });
 
     timerBlock.classList.remove(
         "timerWarning"
