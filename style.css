@@ -116,17 +116,12 @@ background:#012454;
 }
 
 .team{
-
-background:#05357b;
-
-border-radius:12px;
-
-padding:10px;
-
-text-align:center;
-
-box-shadow:0 0 12px rgba(0,0,0,.4);
-
+    background:#05357b;
+    border-radius:12px;
+    padding:10px;
+    text-align:center;
+    box-shadow:0 0 12px rgba(0,0,0,.4);
+    box-sizing:border-box;
 }
 
 .team h2{
