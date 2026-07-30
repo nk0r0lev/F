@@ -691,28 +691,13 @@ function updateScores(){
 
 function changeScore(team, value){
 
-
     let index = team - 1;
-
 
     scores[index] += value;
 
-
-
-    if(scores[index] < 0){
-
-        scores[index] = 0;
-
-    }
-
-
-
     updateScores();
 
-
     saveGame();
-
-
 }
 
 
