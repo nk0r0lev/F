@@ -100,7 +100,8 @@ background:white;
 
 #scoreBoard{
 
-height:130px;
+min-height:160px;
+height:auto;
 
 display:grid;
 
