@@ -20,6 +20,8 @@ let scores = [0, 0, 0, 0];
 let currentQuestion = null;
 
 let timer = null;
+let timerSound = new Audio("timer.mp3");
+timerSound.loop = true;
 
 let seconds = 30;
 
@@ -455,74 +457,37 @@ closeQuestionButton.onclick = function(){
 
 function startTimer(){
 
-
     stopTimer();
-
 
     seconds = 30;
 
-
-    timerBlock.innerHTML =
-    seconds;
-
-// Звук окончания времени
-    const timerSound = new Audio("timer.mp3");
-
-    timerSound.play().catch(error => {
-        console.log(
-            "Не удалось воспроизвести timer.mp3:",
-            error
-        );
-    });
-
-    timerBlock.classList.remove(
-        "timerWarning"
-    );
-
-
-
     timer = setInterval(function(){
-
-
 
         seconds--;
 
+        timerBlock.innerHTML = seconds;
 
+        if(seconds <= 10 && seconds > 0){
 
-        timerBlock.innerHTML =
-        seconds;
+            if(timerSound.paused){
+                timerSound.currentTime = 0;
 
-
-
-        if(seconds <= 10){
-
-
-            timerBlock.classList.add(
-                "timerWarning"
-            );
-
+                timerSound.play().catch(error => {
+                    console.log("Не удалось воспроизвести timer.mp3:", error);
+                });
+            }
 
         }
-
-
 
         if(seconds <= 0){
 
-
             stopTimer();
 
-
-            timerBlock.innerHTML =
-            "0";
-
+            timerBlock.innerHTML = "0";
 
         }
 
-
-
-    },1000);
-
-
+    }, 1000);
 }
 
 
@@ -530,19 +495,15 @@ function startTimer(){
 
 function stopTimer(){
 
-
     if(timer){
 
-
         clearInterval(timer);
-
-
         timer = null;
-
 
     }
 
-
+    timerSound.pause();
+    timerSound.currentTime = 0;
 }
 
 
